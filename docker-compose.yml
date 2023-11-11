@@ -3,6 +3,12 @@ services:
     image: mysql:8
     restart: always
 
+    deploy:
+      resources:
+        limits:
+          cpus: "0.50"
+          memory: 1g
+
     env_file:
       - .env
     environment:
@@ -17,6 +23,12 @@ services:
     image: phpmyadmin/phpmyadmin:latest
     restart: unless-stopped
 
+    deploy:
+      resources:
+        limits:
+          cpus: "0.25"
+          memory: 512m
+
     ports:
       - 3001:80
 
@@ -28,6 +40,13 @@ services:
 
   wordpress:
     image: wordpress:${WORDPRESS_IMAGE_TAG}
+    restart: unless-stopped
+
+    deploy:
+      resources:
+        limits:
+          cpus: "0.30"
+          memory: 512m
 
     ports:
       - ${WORDPRESS_HTTP_PORT}:80
