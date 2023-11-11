@@ -3,6 +3,10 @@ services:
     image: mysql:8
     restart: always
 
+    cap_drop:
+      - NET_ADMIN
+      - SYS_ADMIN
+
     deploy:
       resources:
         limits:
@@ -23,6 +27,10 @@ services:
     image: phpmyadmin/phpmyadmin:latest
     restart: unless-stopped
 
+    cap_drop:
+      - NET_ADMIN
+      - SYS_ADMIN
+
     deploy:
       resources:
         limits:
@@ -41,6 +49,10 @@ services:
   wordpress:
     image: wordpress:${WORDPRESS_IMAGE_TAG}
     restart: unless-stopped
+
+    cap_drop:
+      - NET_ADMIN
+      - SYS_ADMIN
 
     deploy:
       resources:
