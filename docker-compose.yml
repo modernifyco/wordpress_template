@@ -1,0 +1,27 @@
+services:
+  db:
+    image: mysql:8
+    restart: always
+
+    env_file:
+      - .env
+    environment:
+      - MYSQL_DATABASE=${WP_DB_NAME}
+      - MYSQL_USER=${WP_DB_USER}
+      - MYSQL_PASSWORD=${WP_DB_PASS}
+
+    volumes:
+      - ./app/db:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    restart: unless-stopped
+
+    ports:
+      - 3001:80
+
+    environment:
+      - PMA_HOST=db
+
+    depends_on:
+      - db
