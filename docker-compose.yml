@@ -13,8 +13,6 @@ services:
           cpus: "0.50"
           memory: 1g
 
-    env_file:
-      - .env
     environment:
       - MYSQL_DATABASE=${WORDPRESS_DB_NAME}
       - MYSQL_USER=${WORDPRESS_DB_USER}
