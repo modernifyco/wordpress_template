@@ -53,6 +53,8 @@ services:
   wordpress:
     build:
       context: ./wordpress
+      args:
+        - WORDPRESS_IMAGE_TAG=${WORDPRESS_IMAGE_TAG}
     
     restart: unless-stopped
 
