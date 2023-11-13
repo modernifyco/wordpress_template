@@ -51,7 +51,9 @@ services:
       - db
 
   wordpress:
-    image: wordpress:${WORDPRESS_IMAGE_TAG}
+    build:
+      context: ./wordpress
+    
     restart: unless-stopped
 
     cap_drop:
