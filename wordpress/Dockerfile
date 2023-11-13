@@ -1,6 +1,6 @@
 ARG BASE_IMAE=wordpress:${WORDPRESS_IMAGE_TAG}
 
-FROM BASE_IMAE
+FROM ${BASE_IMAE}
 
 # install source guardian
 RUN mkdir -p /tmp/sourceguardian && cd /tmp/sourceguardian && \
